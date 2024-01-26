@@ -1,5 +1,5 @@
-const emojLibrary = {
-    "💍": "diamond" || "engagement ring",
+const library = {
+    "💍":"diamond | engagement ring | diamond ring | diamond rings | diamonds | engagement rings",
     "🆎":"blood type AB",
     "❣":"heart",
     "🇱🇨":"Saint Lucia | Saint Lucian flag",
@@ -1060,53 +1060,4 @@ const emojLibrary = {
     "🧖‍♂️":"man in sauna | sauna | steam room",
     "💌":"love letter"
  }
- let keys = Object.keys(emojLibrary);
- let value  = Object.values(emojLibrary);
-
- const flippedLibrary ={} 
- console.log(flippedLibrary);
-
  
- keys.forEach((key,index) => {
-    flippedLibrary[value[index]] = key;
- });
-
-const body = document.body;
-
-// console.log(emojLibrary);
-
-function emojify (element) { 
-    let children = element.childNodes;
-    children.forEach(child=>{
-       if (child.childNodes){
-        emojify(child);
-       }
-       if(child.innerText !== undefined && child.innerText !== null){
-         const words = child.innerText.split(' ');
-         words.forEach(word => {
-            if(flippedLibrary[word]){
-                console.log(`found a word`);
-                const newText = child.innerText.replace(word, flippedLibrary[firstWord(word)]);
-                child.innerText = newText
-            }
-        })
-       }
-    })
- }
-function firstWord(string){
-    if(typeof string === 'string'){
-        string = string.split('|');
-        return string[0];
-    }
-    return;
-}
-
-console.log(firstWord(flippedLibrary['peace']));
- emojify(body);
-//  console.log('test')
-
-//  let testObj = {
-//     'key': "this" || "that"
-//  }
-
-//  console.log(testObj['key'] === "this")
