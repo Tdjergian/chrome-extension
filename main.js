@@ -1060,16 +1060,23 @@ const emojLibrary = {
     "🧖‍♂️":"man in sauna | sauna | steam room",
     "💌":"love letter"
  }
+
+ for (let key in emojLibrary){
+    emojLibrary[key] = firstWord(emojLibrary[key])
+ }
+
  let keys = Object.keys(emojLibrary);
  let value  = Object.values(emojLibrary);
 
  const flippedLibrary ={} 
- console.log(flippedLibrary);
 
+ 
  
  keys.forEach((key,index) => {
     flippedLibrary[value[index]] = key;
  });
+ console.log(flippedLibrary);
+ 
 
 const body = document.body;
 
@@ -1084,10 +1091,14 @@ function emojify (element) {
        if(child.innerText !== undefined && child.innerText !== null){
          const words = child.innerText.split(' ');
          words.forEach(word => {
+            // if(word === 'dog'){
+            //     console.log(`dog`)
+            // }
+
             if(flippedLibrary[word]){
-                console.log(`found a word`);
-                const newText = child.innerText.replace(word, flippedLibrary[firstWord(word)]);
-                child.innerText = newText
+                    const newText = child.innerText.replace(word, flippedLibrary[word]);
+                    child.innerText = newText
+                    console.log(`${word}`);
             }
         })
        }
@@ -1096,7 +1107,7 @@ function emojify (element) {
 function firstWord(string){
     if(typeof string === 'string'){
         string = string.split('|');
-        return string[0];
+        return string[0].slice(0, -1);
     }
     return;
 }
