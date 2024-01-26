@@ -1074,6 +1074,7 @@ const emojLibrary = {
  
  keys.forEach((key,index) => {
     flippedLibrary[value[index]] = key;
+    flippedLibrary[capitalize(value[index])] = key
  });
  console.log(flippedLibrary);
  
@@ -1110,6 +1111,10 @@ function firstWord(string){
         return string[0].slice(0, -1);
     }
     return;
+}
+
+function capitalize(string){
+    return string[0].toUpperCase()+string.slice(1)
 }
 
 console.log(firstWord(flippedLibrary['peace']));
